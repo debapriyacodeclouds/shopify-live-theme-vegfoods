@@ -1,0 +1,94 @@
+{% comment %} All Products with Sorting & Filtering (No Tag Filter Sidebar) {% endcomment %}
+<div class="container py-5">
+  <div class="row">
+    <!-- Products + Sort (Full Width) -->
+    <div class="col-12">
+      <div class="d-flex justify-content-end mb-4">
+        <form method="get" class="form-inline">
+          <label for="SortBy" class="me-2 fw-bold">Sort By:</label>
+          <select name="sort_by" id="SortBy" class="form-select" onchange="this.form.submit()">
+            <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+            <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+            <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
+            <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, low to high</option>
+            <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, high to low</option>
+            <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+            <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Oldest</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="row gx-4">
+        {% paginate collection.products by 12 %}
+          {% for product in collection.products %}
+            <div class="col-md-6 col-lg-4 col-xl-3 ftco-animate mb-4">
+  <div class="product h-100 d-flex flex-column">
+    <a href="{{ product.url }}" class="img-prod">
+      <img class="img-fluid" src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+      {% if product.compare_at_price > product.price %}
+        {% assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+        <span class="status">{{ discount | round }}%</span>
+      {% endif %}
+      <div class="overlay"></div>
+    </a>
+
+    <div class="text px-3 pt-3 pb-0 text-center d-flex flex-column justify-content-between flex-grow-1">
+      <div class="product-info">
+        <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+        <div class="d-flex justify-content-center">
+          <div class="pricing">
+            <p class="price">
+              {% if product.compare_at_price > product.price %}
+                <span class="mr-2 price-dc">{{ product.compare_at_price | money }}</span>
+                <span class="price-sale">{{ product.price | money }}</span>
+              {% else %}
+                <span>{{ product.price | money }}</span>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-area px-3 pt-2 pb-3">
+      <a href="/cart/{{ product.variants.first.id }}:1?checkout" class="buy-now-btn text-white text-center">Buy Now</a>
+    </div>
+  </div>
+</div>
+
+          {% endfor %}
+
+          {% if paginate.pages > 1 %}
+            <div class="col-12 mt-4">
+              <nav>
+                <ul class="pagination justify-content-center">
+                  {% if paginate.previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ paginate.previous.url }}" aria-label="Previous">&laquo;</a>
+                    </li>
+                  {% endif %}
+                  {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                      <li class="page-item">
+                        <a class="page-link" href="{{ part.url }}">{{ part.title }}</a>
+                      </li>
+                    {% else %}
+                      <li class="page-item active">
+                        <span class="page-link">{{ part.title }}</span>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if paginate.next %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ paginate.next.url }}" aria-label="Next">&raquo;</a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </nav>
+            </div>
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</div>

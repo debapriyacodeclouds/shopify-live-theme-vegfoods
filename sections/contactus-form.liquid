@@ -1,0 +1,121 @@
+{% schema %}
+{
+  "name": "Contact Form",
+  "tag": "section",
+  "class": "contact-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Contact Us"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "198 West 21th Street, Suite 721 New York NY 10016"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+ 1235 2355 98"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@yoursite.com"
+    },
+    {
+      "type": "text",
+      "id": "website",
+      "label": "Website",
+      "default": "yoursite.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="hero-wrap hero-bread" style="
+  background-image: url('{{ section.settings.hero_image | image_url: width: 1600 }}');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+">
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center py-5">
+      <div class="col-12 col-md-9 text-center">
+        <p class="breadcrumbs mb-2">
+          <span class="mr-2"><a href="{{ routes.root_url }}">Home</a></span>
+          <span>Contact us</span>
+        </p>
+        <h1 class="mb-0 bread">{{ section.settings.hero_title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="contact-section" style="background-color: #fff;">
+  <div class="container py-5">
+    <div class="row">
+      <!-- Left Column: Contact Info -->
+      <div class="col-md-5 mb-4 mb-md-0">
+        <h3 class="font-weight-bold text-primary mb-4">📞 Contact Us</h3>
+        <p><strong>📍 Address:</strong><br>{{ section.settings.address }}</p>
+        <p><strong>☎️ Phone:</strong><br><a href="tel:{{ section.settings.phone | replace: ' ', '' }}">{{ section.settings.phone }}</a></p>
+        <p><strong>✉️ Email:</strong><br><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+        <p><strong>🌐 Website:</strong><br><a href="#">{{ section.settings.website }}</a></p>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="col-md-7">
+        <h3 class="font-weight-bold text-primary mb-4 text-md-right text-center">✉️ Get in Touch</h3>
+        <form method="post" action="/contact#contact_form" id="contact_form">
+          <input type="hidden" name="form_type" value="contact" />
+          <input type="hidden" name="utf8" value="✓" />
+
+          <div class="form-group">
+            <input type="text" name="contact[name]" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="contact[email]" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="contact[subject]" class="form-control" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <textarea name="contact[body]" rows="6" class="form-control" placeholder="Message" required></textarea>
+          </div>
+          <div class="form-group text-right">
+            <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4">
+          </div>
+
+          {% if form.posted_successfully? %}
+            <p class="text-success">Your message has been sent!</p>
+          {% endif %}
+          {% if form.errors %}
+            <div class="text-danger">
+              {% for field in form.errors %}
+                <p>{{ field | capitalize }}: {{ form.errors.messages[field] }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

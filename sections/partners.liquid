@@ -1,0 +1,52 @@
+<section class="ftco-section ftco-partner">
+  <div class="container">
+    <div class="partner-logos d-flex flex-wrap justify-content-center align-items-center">
+      {% for block in section.blocks %}
+        <div class="logo-item">
+          <a href="{{ block.settings.link }}" class="partner d-block text-center">
+            <img src="{{ block.settings.image | image_url: width: 200 }}" class="img-fluid" alt="Partner Logo" loading="lazy">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Partner Logos",
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "partner_logo",
+      "name": "Partner Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Partner URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partner Logos",
+      "category": "Image",
+      "blocks": [
+        { "type": "partner_logo" },
+        { "type": "partner_logo" },
+        { "type": "partner_logo" },
+        { "type": "partner_logo" },
+        { "type": "partner_logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

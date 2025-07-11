@@ -1,0 +1,41 @@
+{% schema %}
+{
+  "name": "Blog Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Subtitle",
+      "default": "Welcome to our blog page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="hero-wrap hero-bread" style="background-image: url({{ section.settings.hero_bg_image |image_url}}); ">
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 text-center">
+        <h1 class="mb-0 bread">{{ section.settings.hero_title }}</h1>
+        <p class="breadcrumbs"><span>{{ section.settings.hero_subtitle }}</span></p>
+      </div>
+    </div>
+  </div>
+</section>

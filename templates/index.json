@@ -1,0 +1,281 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero-slider": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_CetRBg": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/slider-1.png",
+            "heading": "We serve Fresh Vegetables & Fruits",
+            "subheading": "We deliver organic vegetables & fruits",
+            "button_text": "View Details",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "slide_EY9tED": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/slider-2.png",
+            "heading": "We serve Fresh Vegetables & Fruits",
+            "subheading": "We deliver organic foods",
+            "button_text": "View Details",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "slide_CetRBg",
+        "slide_EY9tED"
+      ],
+      "settings": {}
+    },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-shipping-fast",
+            "icon_bg": "bg-color-1 active",
+            "title": "Free Shipping",
+            "subtitle": "On order over $100"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-leaf",
+            "icon_bg": "bg-color-2",
+            "title": "Always Fresh",
+            "subtitle": "Product well packaged"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-medal",
+            "icon_bg": "bg-color-3",
+            "title": "Superior Quality",
+            "subtitle": "Quality Products"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-headset",
+            "icon_bg": "bg-color-4",
+            "title": "Support",
+            "subtitle": "24/7 Support"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {}
+    },
+    "product-categories": {
+      "type": "product-categories",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/category-2.jpg",
+            "title": "Fruits",
+            "link": "/collections/fruits"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/category-1.jpg",
+            "title": "Vegetables",
+            "link": "/collections/vegetables"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/category-3.jpg",
+            "title": "Juices",
+            "link": "/collections/juices"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/category-4.jpg",
+            "title": "Dried",
+            "link": "shopify://collections/dried-fruits"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4"
+      ],
+      "settings": {
+        "large_image": "shopify://shop_images/category.jpg",
+        "large_heading": "Vegetables",
+        "large_subtext": "Protect the health of every home",
+        "large_button_text": "Shop now",
+        "large_button_link": "/collections/all"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "subheading": "Featured Products",
+        "heading": "Our Products",
+        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia",
+        "collection": "frontpage"
+      }
+    },
+    "deal_of_the_day": {
+      "type": "deal-of-the-day",
+      "settings": {
+        "background_image": "shopify://shop_images/bg_3.jpg",
+        "subheading": "Best Price For You",
+        "heading": "Deal of the Day",
+        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia",
+        "product_name": "Spinach",
+        "product_link": "#",
+        "old_price": "Rs.10",
+        "new_price": "Rs.5"
+      }
+    },
+    "testimonial_carousel": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_99iXgx": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_1.jpg",
+            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "name": "Garreth Smith",
+            "position": "web developer"
+          }
+        },
+        "testimonial_mq8PNR": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_4.jpg",
+            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "name": "Garreth Smith",
+            "position": "SYTEM ANALYST"
+          }
+        },
+        "testimonial_6P9CHM": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_2.jpg",
+            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "name": "Garreth Smith",
+            "position": "Marketing Manager"
+          }
+        },
+        "testimonial_TpMVpb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_3.jpg",
+            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "name": "Garreth Smith",
+            "position": "UI DESIGNER"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_99iXgx",
+        "testimonial_mq8PNR",
+        "testimonial_6P9CHM",
+        "testimonial_TpMVpb"
+      ],
+      "settings": {
+        "subheading": "Testimony",
+        "heading": "Our satisfied customer says",
+        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in"
+      }
+    },
+    "partner-logos": {
+      "type": "partners",
+      "blocks": {
+        "partner_logo_zEfie6": {
+          "type": "partner_logo",
+          "settings": {
+            "image": "shopify://shop_images/partner-1.png",
+            "link": ""
+          }
+        },
+        "partner_logo_N68yGK": {
+          "type": "partner_logo",
+          "settings": {
+            "image": "shopify://shop_images/partner-2.png",
+            "link": ""
+          }
+        },
+        "partner_logo_D3B7Yh": {
+          "type": "partner_logo",
+          "settings": {
+            "image": "shopify://shop_images/partner-3.png",
+            "link": ""
+          }
+        },
+        "partner_logo_YhXPKy": {
+          "type": "partner_logo",
+          "settings": {
+            "image": "shopify://shop_images/partner-4.png",
+            "link": ""
+          }
+        },
+        "partner_logo_DCG3aQ": {
+          "type": "partner_logo",
+          "settings": {
+            "image": "shopify://shop_images/partner-5.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "partner_logo_zEfie6",
+        "partner_logo_N68yGK",
+        "partner_logo_D3B7Yh",
+        "partner_logo_YhXPKy",
+        "partner_logo_DCG3aQ"
+      ],
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Subscribe to our Newsletter",
+        "subheading": "Get e-mail updates about our latest shops and special offers",
+        "bg_color": "#f8f9fa"
+      }
+    }
+  },
+  "order": [
+    "hero-slider",
+    "features",
+    "product-categories",
+    "featured-products",
+    "deal_of_the_day",
+    "testimonial_carousel",
+    "partner-logos",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "about-us-section",
+      "settings": {
+        "hero_image": "shopify://shop_images/category-1_96decdea-8313-442f-a8f5-a4dad97bedbb.jpg",
+        "hero_title": "About Us",
+        "hero_breadcrumb": "Home",
+        "about_image": "shopify://shop_images/about.jpg",
+        "video_url": "",
+        "heading": "Welcome to Vegefoods an eCommerce website",
+        "about_content": "<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p><p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p><p><a href=\"/collections/frontpage\" title=\"Home page\">Shop now</a></p>",
+        "hero_height": 500
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Subscribe to our Newsletter",
+        "subheading": "Get e-mail updates about our latest shops and special offers",
+        "bg_color": "#f8f9fa"
+      }
+    },
+    "counter-section": {
+      "type": "counter-section",
+      "settings": {
+        "bg_image": "shopify://shop_images/bg_3.jpg",
+        "happy_customers": 10000,
+        "happy_customers_text": "Happy Customers",
+        "branches": 100,
+        "branches_text": "Branches",
+        "partner": 1000,
+        "partner_text": "Partners",
+        "awards": 100,
+        "awards_text": "Awards"
+      }
+    },
+    "testimonial": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_98QCXx": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_1.jpg",
+            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "name": "Garreth Smith",
+            "position": "Marketing Manager"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_98QCXx"
+      ],
+      "settings": {
+        "subheading": "Testimony",
+        "heading": "Our satisfied customer says",
+        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in"
+      }
+    },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "feature_Gz3FDp": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-shipping-fast",
+            "icon_bg": "bg-success",
+            "title": "Free Shipping",
+            "subtitle": "On order over $100"
+          }
+        },
+        "feature_FeJC3t": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-leaf",
+            "icon_bg": "bg-warning",
+            "title": "Always Fresh",
+            "subtitle": "Product well packaged"
+          }
+        },
+        "feature_9N4GXx": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-medal",
+            "icon_bg": "bg-primary",
+            "title": "Superior Quality",
+            "subtitle": "Quality Products"
+          }
+        },
+        "feature_EwGHf8": {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-headset",
+            "icon_bg": "bg-danger",
+            "title": "Support",
+            "subtitle": "24/7 Support"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Gz3FDp",
+        "feature_FeJC3t",
+        "feature_9N4GXx",
+        "feature_EwGHf8"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "newsletter",
+    "counter-section",
+    "testimonial",
+    "features"
+  ]
+}

@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blog-hero": {
+      "type": "blog-hero",
+      "settings": {
+        "hero_bg_image": "shopify://shop_images/category-1_96decdea-8313-442f-a8f5-a4dad97bedbb.jpg",
+        "hero_title": "HOME BLOG",
+        "hero_subtitle": "BLOG"
+      }
+    },
+    "blog": {
+      "type": "blog",
+      "settings": {
+        "blog": "news",
+        "posts_per_page": 1,
+        "tag_cloud": "fruits,tomatoe,mango,apple,carrots,orange,pepper,eggplant"
+      }
+    }
+  },
+  "order": [
+    "blog-hero",
+    "blog"
+  ]
+}

@@ -1,0 +1,208 @@
+<footer class="ftco-footer ftco-section">
+  <div class="container">
+    
+    <!-- Scroll to top button -->
+    <div class="row justify-content-center mb-3">
+      <div class="mouse">
+        <a href="#" class="mouse-icon">
+          <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Footer Columns -->
+    <div class="row mb-5">
+      <!-- Store Info -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="ftco-footer-widget">
+          <h2 class="ftco-heading-2">{{ section.settings.store_name }}</h2>
+          <p>{{ section.settings.store_description }}</p>
+          <ul class="ftco-footer-social list-unstyled mt-4 d-flex">
+            {% if section.settings.twitter_link != blank %}
+              <li class="ftco-animate mr-3"><a href="{{ section.settings.twitter_link }}"><span class="ion-logo-twitter"></span></a></li>
+            {% endif %}
+            {% if section.settings.facebook_link != blank %}
+              <li class="ftco-animate mr-3"><a href="{{ section.settings.facebook_link }}"><span class="ion-logo-facebook"></span></a></li>
+            {% endif %}
+            {% if section.settings.instagram_link != blank %}
+              <li class="ftco-animate"><a href="{{ section.settings.instagram_link }}"><span class="ion-logo-instagram"></span></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dynamic Footer Blocks -->
+      {% for block in section.blocks %}
+        {% if block.type == 'menu' %}
+          <div class="col-md-6 col-lg-2 mb-4">
+            <div class="ftco-footer-widget">
+              <h2 class="ftco-heading-2">{{ block.settings.menu_title }}</h2>
+              <ul class="list-unstyled">
+                {% for link in linklists[block.settings.menu].links %}
+                  <li><a href="{{ link.url }}" class="py-1 d-block">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.type == 'help' %}
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="ftco-footer-widget">
+              <h2 class="ftco-heading-2">{{ block.settings.help_title }}</h2>
+              <ul class="list-unstyled">
+                {% for link in linklists[block.settings.help_menu].links %}
+                  <li><a href="{{ link.url }}" class="py-1 d-block">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.type == 'contact' %}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="ftco-footer-widget">
+              <h2 class="ftco-heading-2">{{ block.settings.contact_title }}</h2>
+              <div class="block-23">
+                <ul>
+                  {% if block.settings.contact_address != blank %}
+                    <li><span class="ion-ios-pin mr-2"></span><span class="text">{{ block.settings.contact_address }}</span></li>
+                  {% endif %}
+                  {% if block.settings.contact_phone != blank %}
+                    <li><a href="tel:{{ block.settings.contact_phone }}"><span class="ion-ios-call mr-2"></span><span class="text">{{ block.settings.contact_phone }}</span></a></li>
+                  {% endif %}
+                  {% if block.settings.contact_email != blank %}
+                    <li><a href="mailto:{{ block.settings.contact_email }}"><span class="ion-ios-mail mr-2"></span><span class="text">{{ block.settings.contact_email }}</span></a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="mb-0 small text-muted">
+          &copy;<script>document.write(new Date().getFullYear());</script> {{ section.settings.copyright }}
+        </p>
+      </div>
+    </div>
+    
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "store_name",
+      "label": "Store Name",
+      "default": "Vegefoods"
+    },
+    {
+      "type": "textarea",
+      "id": "store_description",
+      "label": "Store Description",
+      "default": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia."
+    },
+    {
+      "type": "url",
+      "id": "twitter_link",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text",
+      "default": "All rights reserved | Template by Colorlib"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title",
+          "default": "Menu"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        }
+      ]
+    },
+    {
+      "type": "help",
+      "name": "Help Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "help_title",
+          "label": "Help Section Title",
+          "default": "Help"
+        },
+        {
+          "type": "link_list",
+          "id": "help_menu",
+          "label": "Help Menu"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "contact_title",
+          "label": "Title",
+          "default": "Have a Questions?"
+        },
+        {
+          "type": "text",
+          "id": "contact_address",
+          "label": "Address",
+          "default": "203 Fake St. Mountain View, San Francisco, California, USA"
+        },
+        {
+          "type": "text",
+          "id": "contact_phone",
+          "label": "Phone",
+          "default": "+2 392 3929 210"
+        },
+        {
+          "type": "text",
+          "id": "contact_email",
+          "label": "Email",
+          "default": "info@yourdomain.com"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Footer with Menus, Help, and Contact"
+    }
+  ]
+}
+{% endschema %}

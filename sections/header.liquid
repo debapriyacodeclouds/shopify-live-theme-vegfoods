@@ -1,0 +1,81 @@
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "phone", "label": "Phone Number", "default": "+1235 2355 98" },
+    { "type": "text", "id": "email", "label": "Email Address", "default": "youremail@email.com" },
+    { "type": "text", "id": "delivery_text", "label": "Delivery Message", "default": "3-5 Business days delivery & Free Returns" },
+    { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "Vegefoods" },
+    { "type": "text", "id": "promo_message", "label": "Promotional Banner Message", "default": "You’re eligible for Rs.100 OFF on orders of Rs.499 or more! Use code SAVE100 at checkout." }
+  ],
+  "presets": [{ "name": "Header" }]
+}
+{% endschema %}
+
+<!-- Promotional Banner -->
+{% if section.settings.promo_message != blank %}
+  <div class="promo-banner py-1 text-white text-center">
+    <div class="container">
+      <span class="small">{{ section.settings.promo_message }}</span>
+    </div>
+  </div>
+{% endif %}
+<!-- Top Contact Bar -->
+<div class="py-1 bg-primary text-white">
+  <div class="container">
+    <div class="row align-items-center text-center text-md-left">
+      <div class="col-md-4 mb-2 mb-md-0 d-flex justify-content-center justify-content-md-start">
+        <i class="ion-ios-telephone mr-2"></i><span>{{ section.settings.phone }}</span>
+      </div>
+      <div class="col-md-4 mb-2 mb-md-0 d-flex justify-content-center">
+        <i class="ion-ios-mail mr-2"></i><span>{{ section.settings.email }}</span>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
+        <span>{{ section.settings.delivery_text }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="{{ routes.root_url }}">{{ section.settings.brand_name }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ml-auto">
+        {% for link in linklists.main-menu.links %}
+          {% if link.links != blank %}
+            <li class="nav-item dropdown">
+              <!--  Use # instead of actual link.url to avoid querySelector error -->
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{ link.title }}
+              </a>
+              <div class="dropdown-menu">
+                {% for child in link.links %}
+                  <a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a>
+                {% endfor %}
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item {% if link.url == request.path %}active{% endif %}">
+              <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        
+        <!-- Cart Item (unchanged) -->
+        <li class="nav-item">
+          <a href="/cart" class="nav-link d-flex align-items-center">
+            <span class="ion-ios-cart mr-1"></span> 
+            <span>[{{ cart.items.size }}]</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

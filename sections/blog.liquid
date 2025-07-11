@@ -1,0 +1,105 @@
+{% schema %}
+{
+  "name": "Blog Section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Select blog"
+    },
+    {
+      "type": "number",
+      "id": "posts_per_page",
+      "label": "Posts per page",
+      "default": 5,
+     
+    },
+    {
+      "type": "text",
+      "id": "tag_cloud",
+      "label": "Tag Cloud (comma separated tags)",
+      "default": "fruits,tomatoe,mango,apple,carrots,orange,pepper,eggplant"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Section",
+      "category": "Blog"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row">
+      <!-- Blog posts -->
+      <div class="col-lg-8 ftco-animate">
+
+        {% paginate blogs[section.settings.blog].articles by section.settings.posts_per_page %}
+          {% for article in paginate.items %}
+            <div class="blog-entry d-md-flex align-items-stretch mb-4">
+              <div class="text pl-md-4">
+                <div class="meta mb-3">
+                  <div><a href="{{ article.url }}">{{ article.published_at | date: "%B %d, %Y" }}</a></div>
+                  <div><a href="#">{{ article.author }}</a></div>
+                  <div><a href="{{ article.url }}#comments" class="meta-chat"><span class="icon-chat"></span> {{ article.comments_count }}</a></div>
+                </div>
+                <h3 class="heading"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                <p>{{ article.excerpt | strip_html | truncate: 150 }}</p>
+                <p><a href="{{ article.url }}" class="btn btn-primary py-2 px-3">Read more</a></p>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div class="pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="btn btn-primary">Previous</a>
+            {% endif %}
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="btn btn-primary">Next</a>
+            {% endif %}
+          </div>
+        {% endpaginate %}
+
+      </div> <!-- .col-lg-8 -->
+
+      <!-- Sidebar -->
+      <div class="col-lg-4 sidebar ftco-animate">
+
+        <!-- Search form -->
+        <div class="sidebar-box">
+          <form action="/search" method="get" class="search-form">
+            <div class="form-group">
+              <input type="search" name="q" class="form-control" placeholder="Search...">
+            </div>
+          </form>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-box ftco-animate">
+          <h3 class="heading">Categories</h3>
+          <ul class="categories">
+            {% for tag in blogs[section.settings.blog].tags %}
+              <li><a href="/blogs/{{ section.settings.blog }}/tagged/{{ tag | handle }}">{{ tag }} <span>({{ blogs[section.settings.blog].articles_count }})</span></a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Tag Cloud -->
+        <div class="sidebar-box ftco-animate">
+          <h3 class="heading">Tag Cloud</h3>
+          <ul class="tag-cloud">
+            {% assign tags = section.settings.tag_cloud | split: "," %}
+            {% for tag in tags %}
+              {% assign trimmed_tag = tag | strip %}
+              <li><a href="/blogs/{{ section.settings.blog }}/tagged/{{ trimmed_tag | handle }}">{{ trimmed_tag }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div> <!-- .sidebar -->
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

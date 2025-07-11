@@ -1,0 +1,220 @@
+{% schema %}
+{
+  "name": "Custom Cart Section",
+  "tag": "section",
+  "class": "custom-cart-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Cart"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="ftco-section ftco-cart">
+  <div class="container">
+    {% if cart.item_count > 0 %}
+      <div class="row">
+        <div class="col-md-12">
+          <form id="cart-form" action="/cart" method="post" novalidate>
+            <div class="cart-list">
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th></th>
+                    <th></th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in cart.items %}
+                    <tr class="text-center" data-line="{{ forloop.index }}">
+                      <td class="product-remove">
+                        <a href="{{ item.url_to_remove }}"><span class="ion-ios-close"></span></a>
+                      </td>
+                      <td class="image-prod">
+                        <div class="img" style="background-image:url('{{ item.image | img_url: 'medium' }}');"></div>
+                      </td>
+                      <td class="product-name">
+                        <h3>{{ item.product.title }}</h3>
+                        {% if item.variant.title != 'Default Title' %}
+                          <p>{{ item.variant.title }}</p>
+                        {% endif %}
+                      </td>
+                      <td class="price" data-price="{{ item.final_line_price }}">{{ item.final_price | money_without_currency }}</td>
+                      <td class="quantity">
+                        <input type="number" name="updates[]" value="{{ item.quantity }}" min="1" class="quantity form-control input-number" data-key="{{ item.key }}">
+                      </td>
+                      <td class="total" data-line-price>{{ item.line_price | money_without_currency }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <!-- Coupon Info -->
+        <div class="col-lg-4 mt-5 cart-wrap">
+          <div class="cart-total mb-3">
+            <h3>Coupon Code</h3>
+            <p>Enter your coupon code at checkout.</p>
+          </div>
+          <a href="/checkout" class="btn btn-primary py-3 px-4">Apply at Checkout</a>
+        </div>
+
+        <!-- Shipping Estimate -->
+        <div class="col-lg-4 mt-5 cart-wrap">
+          <div class="cart-total mb-3">
+            <h3>Estimate shipping and tax</h3>
+            <p>Calculated at checkout based on address.</p>
+          </div>
+          <a href="/checkout" class="btn btn-primary py-3 px-4">Estimate</a>
+        </div>
+
+        <!-- Cart Totals -->
+        <div class="col-lg-4 mt-5 cart-wrap cart-total">
+          <div class="cart-total mb-3">
+            <h3>Cart Totals</h3>
+            <p class="d-flex">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">{{ cart.items_subtotal_price | divided_by: 100.0 | round: 2 }}</span>
+            </p>
+            <p class="d-flex">
+              <span>Discount</span>
+              <span id="cart-discount">{{ cart.total_discount | divided_by: 100.0 | round: 2 }}</span>
+            </p>
+            <p class="d-flex">
+              <span>Shipping</span>
+              <span>Calculated at checkout</span>
+            </p>
+            <hr>
+            <p class="d-flex total-price">
+              <span>Total</span>
+              <span id="cart-total">{{ cart.total_price | divided_by: 100.0 | round: 2 }}</span>
+            </p>
+            {% if cart.items_subtotal_price >= 49900 %}
+                <div class="cart-discount-message success">
+                  🎉 You're eligible for ₹100 OFF! Use code <strong id="discount-code">SAVE100</strong> at checkout.
+                  <a href="javascript:void(0);" class="btn btn-primary" onclick="copyDiscountCode()">Copy Code</a>
+                </div>
+              {% else %}
+                <div class="cart-discount-message warning">
+                  🛍️ Add ₹{{ 49900 | minus: cart.items_subtotal_price | money_without_currency }} more to use code <strong>SAVE100</strong> for ₹100 OFF at checkout!
+                </div>
+            {% endif %}
+
+          </div>
+          <a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
+        </div>
+      </div>
+    {% else %}
+      <div class="text-center">
+        <h2>Your cart is empty</h2>
+        <a href="/collections/all" class="btn btn-primary mt-3">Continue Shopping</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div id="copy-toast" style="
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+">
+  ✅ Code copied: <strong>SAVE100</strong>
+</div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const quantityInputs = document.querySelectorAll('input.quantity');
+
+    quantityInputs.forEach(input => {
+      input.addEventListener('change', function () {
+        const newQuantity = parseInt(this.value);
+        if (isNaN(newQuantity) || newQuantity < 1) {
+          this.value = 1;
+          return;
+        }
+
+        const lineKey = this.dataset.key;
+
+        fetch('/cart/change.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            id: lineKey,
+            quantity: newQuantity
+          })
+        })
+        .then(response => response.json())
+        .then(cart => {
+          // Update line item totals
+          cart.items.forEach(item => {
+            const inputElem = document.querySelector(`input[data-key="${item.key}"]`);
+            if(inputElem) {
+              const tr = inputElem.closest('tr');
+              const totalTd = tr.querySelector('[data-line-price]');
+              totalTd.textContent = (item.line_price / 100).toFixed(2);
+              // Update price column if you want (optional)
+              const priceTd = tr.querySelector('.price');
+              priceTd.textContent = (item.final_price / 100).toFixed(2);
+            }
+          });
+
+          // Update cart totals
+          document.getElementById('cart-subtotal').textContent = (cart.items_subtotal_price / 100).toFixed(2);
+          document.getElementById('cart-discount').textContent = (cart.total_discount / 100).toFixed(2);
+          document.getElementById('cart-total').textContent = (cart.total_price / 100).toFixed(2);
+        })
+        .catch(err => {
+          console.error('Error updating cart:', err);
+        });
+      });
+    });
+  });
+</script>
+<script>
+  function copyDiscountCode() {
+    const code = document.getElementById('discount-code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      showToast(`✅ Code copied: ${code}`);
+    }).catch(err => {
+      console.error('Failed to copy discount code:', err);
+    });
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('copy-toast');
+    toast.innerHTML = message;
+    toast.style.display = 'block';
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+    }, 2000); // fade out after 2 seconds
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2500); // remove from layout after fade
+  }
+</script>

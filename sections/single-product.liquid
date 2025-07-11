@@ -1,0 +1,172 @@
+<div class="container">
+  <div class="row">
+    <!-- Product Image -->
+    <div class="col-lg-6 mb-5">
+      <a href="{{ product.featured_image | img_url: 'master' }}" class="image-popup">
+        <img src="{{ product.featured_image | img_url: '1024x1024' }}" class="img-fluid" alt="{{ product.title }}">
+      </a>
+    </div>
+
+    <!-- Product Details -->
+    <div class="col-lg-6 product-details pl-md-5">
+      <h3>{{ product.title }}</h3>
+
+      <div class="rating d-flex mb-3">
+        <p class="text-left mr-4">
+          <span class="mr-2">5.0</span>
+          {% for i in (1..5) %}
+            <span class="ion-ios-star-outline"></span>
+          {% endfor %}
+        </p>
+        <p class="text-left mr-4">
+          <span class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></span>
+        </p>
+        <p class="text-left">
+          <span class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></span>
+        </p>
+      </div>
+
+      <p class="price">
+        <span>{{ product.price | money }}</span>
+      </p>
+
+      <div>{{ product.description }}</div>
+
+      <div class="row mt-4">
+        {% if product.variants.size > 1 %}
+          <div class="col-md-6">
+            <div class="form-group d-flex">
+              <div class="select-wrap">
+                <select name="id" id="ProductSelect" class="form-control">
+                  {% for variant in product.variants %}
+                    <option value="{{ variant.id }}">{{ variant.title }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="w-100"></div>
+
+        <!-- Quantity Selector -->
+       
+        <div class="w-100"></div>
+        <div class="col-md-12 mb-4">
+          <p style="color: #000;">{{ product.selected_or_first_available_variant.weight }} {{ product.selected_or_first_available_variant.weight_unit }} available</p>
+        </div>
+      </div>
+
+      <!-- Add to Cart -->
+  <form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" id="variant-id">
+
+  <!-- Quantity Selector Inside Form -->
+  <div class="input-group col-md-6 d-flex mb-3">
+    <span class="input-group-btn mr-2">
+      <button type="button" class="quantity-left-minus btn btn-outline-secondary" onclick="document.getElementById('quantity').stepDown();">
+        <i class="ion-ios-remove"></i>
+      </button>
+    </span>
+    <input type="number" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+    <span class="input-group-btn ml-2">
+      <button type="button" class="quantity-right-plus btn btn-outline-secondary" onclick="document.getElementById('quantity').stepUp();">
+        <i class="ion-ios-add"></i>
+      </button>
+    </span>
+  </div>
+
+  <div class="button-group d-flex flex-wrap">
+  <input type="submit" class="btn btn-primary py-3 px-5 me-2 mb-2 flex-fill" value="Add to Cart">
+  <input type="button" class="btn btn-primary py-3 px-5 mb-2 flex-fill" id="buy-now-btn" value="Buy Now">
+</div>
+</form>
+
+    </div>
+  </div>
+ <!-- Related Products Section -->
+<div class="row mt-5 pt-5 ">
+  <div class="col-12 text-center mb-4">
+    <h2 class="mb-3">Related Products</h2>
+  </div>
+
+  {% assign shown = 0 %}
+  {% for related_product in collections.all.products %}
+    {% if related_product.id != product.id %}
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="product text-center h-100 d-flex flex-column">
+          <a href="{{ related_product.url }}" class="img-prod mb-2">
+            <img src="{{ related_product.featured_image | img_url: '400x' }}" class="img-fluid" alt="{{ related_product.title }}">
+          </a>
+          <div class="text px-2">
+            <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">
+              <a href="{{ related_product.url }}" style="color: #333;">{{ related_product.title }}</a>
+            </h6>
+            <p class="price mb-0" style="font-size: 13px;">{{ related_product.price | money }}</p>
+          </div>
+        </div>
+      </div>
+      {% assign shown = shown | plus: 1 %}
+      {% if shown == 4 %}
+        {% break %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="col-12 text-center mt-4">
+    <a href="/collections/all" class="btn btn-dark px-5 py-3">View More</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+  // Update hidden quantity input when quantity changes
+  document.addEventListener('DOMContentLoaded', () => {
+    const quantityInput = document.getElementById('quantity');
+    const hiddenInput = document.getElementById('hidden-quantity');
+
+    quantityInput.addEventListener('input', () => {
+      hiddenInput.value = quantityInput.value;
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const quantityInput = document.getElementById('quantity');
+    const buyNowBtn = document.getElementById('buy-now-btn');
+    const variantSelect = document.getElementById('ProductSelect');
+    const variantIdInput = document.getElementById('variant-id');
+
+    // Update hidden variant id when dropdown changes
+    if (variantSelect) {
+      variantSelect.addEventListener('change', function () {
+        variantIdInput.value = this.value;
+      });
+    }
+
+    buyNowBtn.addEventListener('click', function () {
+      const variantId = variantIdInput.value;
+      const quantity = quantityInput.value;
+
+      if (variantId && quantity > 0) {
+        const checkoutUrl = `/cart/${variantId}:${quantity}`;
+        window.location.href = checkoutUrl;
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "tag": "section",
+  "class": "ftco-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,64 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container py-4">
+    <div class="row justify-content-center align-items-center py-3">
+      <div class="col-lg-5 col-md-6 text-center text-md-left mb-4 mb-md-0">
+        <h2 style="font-size: 22px;" class="mb-2">{{ section.settings.heading }}</h2>
+        <span>{{ section.settings.subheading }}</span>
+      </div>
+
+      <div class="col-lg-7 col-md-6">
+        <form method="post" action="{{ routes.newsletter_subscribe_url }}" class="subscribe-form w-100">
+          <input type="hidden" name="form_type" value="customer" />
+          <input type="hidden" name="utf8" value="✓" />
+          <div class="form-row align-items-center">
+            <div class="col-12 col-md-8 mb-2 mb-md-0">
+              <input
+                type="email"
+                name="contact[email]"
+                class="form-control w-100"
+                placeholder="Enter email address"
+                required
+              >
+            </div>
+            <div class="col-12 col-md-4">
+              <input type="submit" value="Subscribe" class="btn btn-primary w-100">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Newsletter Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe to our Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get e-mail updates about our latest shops and special offers"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f8f9fa"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Section",
+      "category": "Email"
+    }
+  ]
+}
+{% endschema %}

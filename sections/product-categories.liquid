@@ -1,0 +1,157 @@
+
+
+
+<section class="ftco-section ftco-category ftco-no-pt">
+  <div class="container">
+    <div class="row">
+      <!-- Left 8-column block -->
+      <div class="col-md-8">
+        <div class="row equal-height-row" >
+          <!-- Large banner (right inside left column) -->
+          <div class="col-md-6 order-md-last align-items-stretch d-flex">
+            <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
+              style="background-image: url('{{ section.settings.large_image | image_url }}');">
+              <div class="text text-center">
+                <h2>{{ section.settings.large_heading }}</h2>
+                <p>{{ section.settings.large_subtext }}</p>
+                <p><a href="{{ section.settings.large_button_link }}" class="btn btn-primary">{{ section.settings.large_button_text }}</a></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- First 2 blocks -->
+          <div class="col-md-6">
+            {% for block in section.blocks limit: 2 %}
+              {% if block.settings.image != blank %}
+                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
+                  style="background-image: url('{{ block.settings.image | image_url }}');">
+                  <div class="text px-3 py-1">
+                    <h2 class="mb-0"><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></h2>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right 4-column block: last 2 blocks -->
+      <div class="col-md-4">
+        {% for block in section.blocks offset: 2 limit: 2 %}
+          {% if block.settings.image != blank %}
+            <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
+              style="background-image: url('{{ block.settings.image | image_url }}');">
+              <div class="text px-3 py-1">
+                <h2 class="mb-0"><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></h2>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+
+{% schema %}
+{
+  "name": "Product Categories Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "large_image",
+      "label": "Large Center Image"
+    },
+    {
+      "type": "text",
+      "id": "large_heading",
+      "label": "Large Image Heading",
+      "default": "Vegetables"
+    },
+    {
+      "type": "text",
+      "id": "large_subtext",
+      "label": "Large Image Subtext",
+      "default": "Protect the health of every home"
+    },
+    {
+      "type": "text",
+      "id": "large_button_text",
+      "label": "Large Image Button Text",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "large_button_link",
+      "label": "Large Image Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Fruits"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Product Categories Grid",
+      "category": "Custom",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Fruits",
+            "link": "/collections/fruits"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Vegetables",
+            "link": "/collections/vegetables"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Juices",
+            "link": "/collections/juices"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Dried",
+            "link": "/collections/dried"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

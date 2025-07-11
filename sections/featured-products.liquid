@@ -1,0 +1,106 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <span class="subheading">{{ section.settings.subheading }}</span>
+        <h2 class="mb-4">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% assign product_collection = collections[section.settings.collection] %}
+      {% for product in product_collection.products limit: 8 %}
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+      <div class="product">
+        <a href="{{ product.url }}" class="img-prod">
+          <img class="img-fluid" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% if product.compare_at_price > product.price %}
+            <span class="status">
+              {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF
+            </span>
+          {% endif %}
+          <div class="overlay"></div>
+        </a>
+        <div class="text py-3 pb-4 px-3 text-center">
+          <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    
+          <!-- Pricing -->
+          <div class="pricing mb-2">
+            {% if product.compare_at_price > product.price %}
+              <p class="price">
+                <span class="mr-2 price-dc" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
+                <span class="price-sale" style="color: #e60023;">{{ product.price | money }}</span>
+              </p>
+            {% else %}
+              <p class="price">
+                <span>{{ product.price | money }}</span>
+              </p>
+            {% endif %}
+          </div>
+    
+          <!-- Buy Now: Direct to Checkout with 1 Quantity -->
+          <a href="/cart/{{ product.variants.first.id }}:1?checkout" class="btn btn-primary btn-sm w-100">
+            <i class="ion-ios-cart mr-1"></i> Buy Now
+          </a>
+    
+          <!-- View Details (Optional) -->
+          {%- comment -%}
+          <div class="d-flex justify-content-center align-items-center mt-2">
+            <a href="{{ product.url }}" class="btn btn-outline-secondary btn-sm mx-1">
+              <i class="ion-ios-eye"></i>
+            </a>
+            
+            <a href="#" class="btn btn-outline-danger btn-sm mx-1">
+              <i class="ion-ios-heart"></i>
+            </a>
+            
+          </div>
+            {%- endcomment -%}
+        </div>
+      </div>
+    </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Product Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

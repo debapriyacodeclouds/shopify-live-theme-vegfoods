@@ -1,0 +1,108 @@
+<section class="ftco-section testimony-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section ftco-animate text-center">
+        <span class="subheading">{{ section.settings.subheading }}</span>
+        <h2 class="mb-4">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.description }}</p>
+      </div>
+    </div>
+    <div class="row ftco-animate">
+      <div class="col-md-12">
+        <div class="carousel-testimony owl-carousel">
+          {% for block in section.blocks %}
+            <div class="item">
+              <div class="testimony-wrap p-4 pb-5">
+                <div class="user-img mb-5 mx-auto position-relative" style="background-image: url({{ block.settings.image | img_url: 'medium' }});">
+                  <span class="quote d-flex align-items-center justify-content-center">
+                    <i class="ion-ios-quote"></i>
+                  </span>
+                </div>
+                <div class="text text-center">
+                  <p class="mb-5 pl-4 line">{{ block.settings.testimonial_text }}</p>
+                  <p class="name">{{ block.settings.name }}</p>
+                  <span class="position">{{ block.settings.position }}</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr style="margin: 40px 0; border-top: 1px solid #ccc;">
+{% schema %}
+{
+  "name": "Testimonial Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Testimony"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Our satisfied customer says"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer Image"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Garreth Smith"
+        },
+        {
+          "type": "text",
+          "id": "position",
+          "label": "Customer Position",
+          "default": "Marketing Manager"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Testimonial Carousel",
+      "category": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

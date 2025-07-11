@@ -1,0 +1,104 @@
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row ftco-services">
+      {% for block in section.blocks %}
+        <div class="col-12 col-sm-6 col-md-3 text-center d-flex align-self-stretch ftco-animate mb-4">
+          <div class="media block-6 services w-100">
+            <div class="icon {{ block.settings.icon_bg }} d-flex justify-content-center align-items-center mb-2 mx-auto" style="width: 60px; height: 60px; border-radius: 50%;">
+              <i class="{{ block.settings.icon_class }} text-white fs-4"></i>
+            </div>
+            <div class="media-body">
+              <h3 class="heading">{{ block.settings.title }}</h3>
+              <span>{{ block.settings.subtitle }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features Grid",
+  "tag": "section",
+  "class": "features-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_class",
+          "label": "Icon Class",
+          "default": "fas fa-shipping-fast"
+        },
+        {
+          "type": "text",
+          "id": "icon_bg",
+          "label": "Icon Background Class",
+          "default": "bg-success"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sub Text",
+          "default": "On order over $100"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-shipping-fast",
+            "icon_bg": "bg-success",
+            "title": "Free Shipping",
+            "subtitle": "On order over $100"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-leaf",
+            "icon_bg": "bg-warning",
+            "title": "Always Fresh",
+            "subtitle": "Product well packaged"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-medal",
+            "icon_bg": "bg-primary",
+            "title": "Superior Quality",
+            "subtitle": "Quality Products"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_class": "fas fa-headset",
+            "icon_bg": "bg-danger",
+            "title": "Support",
+            "subtitle": "24/7 Support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

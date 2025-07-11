@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "about-us",
+      "settings": {
+        "heading": "About Us",
+        "content": "Welcome to our company. We are dedicated to providing the best service...tttttt"
+      }
+    },
+    "about_us_3ANnLR": {
+      "type": "about-us",
+      "settings": {
+        "heading": "Team Members",
+        "content": "We represent Our Team Members"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "about_us_3ANnLR"
+  ]
+}

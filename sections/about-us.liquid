@@ -1,0 +1,37 @@
+<p>Hello World</p>
+
+
+
+<div class="about-page">
+  <h1>{{ section.settings.heading }}</h1>
+  {%  render 'test-notification' %}
+  <p>{{ section.settings.content }}</p>
+</div>
+
+
+{% schema %}
+
+{
+  "name": "About Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Us"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Welcome to our company. We are dedicated to providing the best service..."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page"
+    }
+  ]
+}
+{% endschema %}
+

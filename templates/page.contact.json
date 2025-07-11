@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "form": {
+      "type": "contactus-form",
+      "settings": {
+        "hero_image": "shopify://shop_images/category-1_96decdea-8313-442f-a8f5-a4dad97bedbb.jpg",
+        "hero_title": "Contact Us",
+        "address": "198 West 21th Street, Suite 721 New York NY 10016",
+        "phone": "+91 9000000011",
+        "email": "support@demostorebuild.com",
+        "website": "https://demostorebuild.myshopify.com/"
+      }
+    }
+  },
+  "order": [
+    "form"
+  ]
+}

@@ -1,0 +1,102 @@
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({{ section.settings.bg_image | img_url: '2048x2048' }});">
+  <div class="container">
+    <div class="row justify-content-center py-5">
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center counter-wrap ftco-animate mb-4">
+            <div class="block-18 text-center">
+              <div class="text">
+                <strong class="number" data-number="{{ section.settings.happy_customers }}">0</strong>
+                <span>{{ section.settings.happy_customers_text }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center counter-wrap ftco-animate mb-4">
+            <div class="block-18 text-center">
+              <div class="text">
+                <strong class="number" data-number="{{ section.settings.branches }}">0</strong>
+                <span>{{ section.settings.branches_text }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center counter-wrap ftco-animate mb-4">
+            <div class="block-18 text-center">
+              <div class="text">
+                <strong class="number" data-number="{{ section.settings.partner }}">0</strong>
+                <span>{{ section.settings.partner_text }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center counter-wrap ftco-animate mb-4">
+            <div class="block-18 text-center">
+              <div class="text">
+                <strong class="number" data-number="{{ section.settings.awards }}">0</strong>
+                <span>{{ section.settings.awards_text }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Counter Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "bg_image"
+    },
+    {
+      "type": "number",
+      "label": "Happy Customers",
+      "id": "happy_customers",
+      "default": 10000
+    },
+    {
+      "type": "text",
+      "label": "Happy Customers Text",
+      "id": "happy_customers_text",
+      "default": "Happy Customers"
+    },
+    {
+      "type": "number",
+      "label": "Branches",
+      "id": "branches",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "label": "Branches Text",
+      "id": "branches_text",
+      "default": "Branches"
+    },
+    {
+      "type": "number",
+      "label": "Partners",
+      "id": "partner",
+      "default": 1000
+    },
+    {
+      "type": "text",
+      "label": "Partners Text",
+      "id": "partner_text",
+      "default": "Partners"
+    },
+    {
+      "type": "number",
+      "label": "Awards",
+      "id": "awards",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "label": "Awards Text",
+      "id": "awards_text",
+      "default": "Awards"
+    }
+  ]
+}
+{% endschema %}
