@@ -10485,7 +10485,7 @@ a.buy-now-btn:hover {
 }
 
 .promo-banner {
-  background-color: #000; /* Green */
+  background-color: green; /* Green */
   font-size: 1rem;
   line-height: 1.5;
 }
