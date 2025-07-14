@@ -40,21 +40,17 @@
           <h2 class="mb-4">{{ section.settings.heading }}</h2>
         </div>
         <div>
-          {% assign content = section.settings.about_content %}
-          {{ content | replace: '<a href=', '<a class="btn btn-primary mt-3" href=' }}
+         {{ section.settings.about_content | richtext }}
+          {% if section.settings.cta_button_text and section.settings.cta_button_url %}
+            <a href="{{ section.settings.cta_button_url }}" class="btn btn-primary mt-3">
+              {{ section.settings.cta_button_text }}
+            </a>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
 
 {% schema %}
 {
@@ -102,6 +98,18 @@
       "default": "<p>Far far away, behind the word mountains...</p><p>Separated they live in Bookmarksgrove...</p><p><a href='#'>Shop now</a></p>"
     },
     {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Shop Now"
+    },
+    {
+    "type": "url",
+    "id": "cta_button_url",
+    "label": "CTA Button URL",
+    "default": "/collections/all"
+    },
+    {
       "type": "range",
       "id": "hero_height",
       "label": "Hero Section Height (px)",
@@ -110,15 +118,11 @@
       "step": 50,
       "default": 500
     }
-    // You can continue adding more counter settings here...
   ],
-  
   "presets": [
     {
-      "name": "About Us Page",
-      
+      "name": "About Us Page"
     }
   ]
 }
 {% endschema %}
-
