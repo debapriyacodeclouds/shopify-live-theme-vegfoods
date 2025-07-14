@@ -10483,9 +10483,9 @@ a.buy-now-btn:hover {
   background-color: #fff4e5;
   color: #b15d00;
 }
-
+/* Announcement Bar */
 .promo-banner {
-  background-color: green; /* Green */
+  background-color: #000; /* Black */
   font-size: 1rem;
   line-height: 1.5;
 }
