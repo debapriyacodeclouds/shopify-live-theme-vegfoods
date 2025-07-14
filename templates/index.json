@@ -152,7 +152,7 @@
         "background_image": "shopify://shop_images/bg_3.jpg",
         "subheading": "Best Price For You",
         "heading": "Deal of the Day",
-        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia",
+        "description": "Your daily dose of delicious deals is here! Hand-picked for freshness and priced to thrill — only for a limited time.",
         "product_name": "Spinach",
         "product_link": "#",
         "old_price": "Rs.10",
@@ -166,7 +166,7 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/person_1.jpg",
-            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "testimonial_text": "Vegefoods has made it so easy to eat healthy while managing a busy schedule. Highly recommended!",
             "name": "Garreth Smith",
             "position": "web developer"
           }
@@ -175,8 +175,8 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/person_4.jpg",
-            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-            "name": "Garreth Smith",
+            "testimonial_text": "I’ve tried many organic stores, but nothing compares to the quality and taste I get from Vegefoods.",
+            "name": "Rahul Verma",
             "position": "SYTEM ANALYST"
           }
         },
@@ -184,17 +184,17 @@
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/person_2.jpg",
-            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-            "name": "Garreth Smith",
-            "position": "Marketing Manager"
+            "testimonial_text": "I appreciate the convenience and reliability. Their organic selection never disappoints.",
+            "name": "David Thompson",
+            "position": "Fitness Trainer"
           }
         },
         "testimonial_TpMVpb": {
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/person_3.jpg",
-            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-            "name": "Garreth Smith",
+            "testimonial_text": "Fresh produce, quick delivery, and outstanding quality every time. Vegefoods is my go-to!",
+            "name": "Omkar Mehata",
             "position": "UI DESIGNER"
           }
         }
@@ -208,7 +208,8 @@
       "settings": {
         "subheading": "Testimony",
         "heading": "Our satisfied customer says",
-        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in"
+        "description": "Trusted by thousands for quality and freshness — our customers love what we deliver."
+
       }
     },
     "partner-logos": {

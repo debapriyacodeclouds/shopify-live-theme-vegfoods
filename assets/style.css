@@ -10498,3 +10498,19 @@ a.buy-now-btn:hover {
   }
 }
 
+/* for testimonial block */
+.testimonial-fixed-height {
+  min-height: 220px;
+  max-height: 220px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .testimonial-fixed-height {
+    min-height: 300px;
+    max-height: 300px;
+  }
+}

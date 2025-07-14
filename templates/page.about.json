@@ -40,23 +40,54 @@
     "testimonial": {
       "type": "testimonial",
       "blocks": {
-        "testimonial_98QCXx": {
+        "testimonial_99iXgx": {
           "type": "testimonial",
           "settings": {
             "image": "shopify://shop_images/person_1.jpg",
-            "testimonial_text": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "testimonial_text": "Vegefoods has made it so easy to eat healthy while managing a busy schedule. Highly recommended!",
             "name": "Garreth Smith",
-            "position": "Marketing Manager"
+            "position": "web developer"
+          }
+        },
+        "testimonial_mq8PNR": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_4.jpg",
+            "testimonial_text": "I’ve tried many organic stores, but nothing compares to the quality and taste I get from Vegefoods.",
+            "name": "Rahul Verma",
+            "position": "SYTEM ANALYST"
+          }
+        },
+        "testimonial_6P9CHM": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_2.jpg",
+            "testimonial_text": "I appreciate the convenience and reliability. Their organic selection never disappoints.",
+            "name": "David Thompson",
+            "position": "Fitness Trainer"
+          }
+        },
+        "testimonial_TpMVpb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/person_3.jpg",
+            "testimonial_text": "Fresh produce, quick delivery, and outstanding quality every time. Vegefoods is my go-to!",
+            "name": "Omkar Mehata",
+            "position": "UI DESIGNER"
           }
         }
       },
       "block_order": [
-        "testimonial_98QCXx"
+        "testimonial_99iXgx",
+        "testimonial_mq8PNR",
+        "testimonial_6P9CHM",
+        "testimonial_TpMVpb"
       ],
       "settings": {
         "subheading": "Testimony",
         "heading": "Our satisfied customer says",
-        "description": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in"
+        "description": "Trusted by thousands for quality and freshness — our customers love what we deliver."
+
       }
     },
     "features": {
