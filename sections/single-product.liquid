@@ -150,7 +150,7 @@
       const quantity = quantityInput.value;
 
       if (variantId && quantity > 0) {
-        const checkoutUrl = `/cart/${variantId}:${quantity}`;
+        const checkoutUrl = `/cart/${variantId}:${quantity}?checkout`;
         window.location.href = checkoutUrl;
       }
     });
